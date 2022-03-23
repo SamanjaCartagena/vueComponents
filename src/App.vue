@@ -1,13 +1,31 @@
 <template>
+<div>
  <GreetT />
+ <ListS :listdata="items" @clickedItem="getClickedItem" />
+ {{clickedItem}}
+ </div>
 </template>
 
 <script>
 import GreetT from './components/GreetT.vue';
+import ListS from './components/ListS.vue';
 export default {
-  name: 'App',
+  data: () => {
+    return {
+      items:['first', 'second', 'third'],
+      clickedItem:''
+    }
+  },
+  name: 'App', 
+  
   components: {
-    GreetT
+    GreetT,
+    ListS
+  },
+  methods:{
+    getClickedItem(value){
+         this.clickedItem = value;
+    }
   }
 }
 </script>
